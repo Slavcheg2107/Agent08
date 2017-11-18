@@ -22,7 +22,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-        CloudRail.setAppKey("592ac2b124c5b453109b3f07");
+        CloudRail.setAppKey("appKey");
     }
     public static Context getContext(){
         return context;
