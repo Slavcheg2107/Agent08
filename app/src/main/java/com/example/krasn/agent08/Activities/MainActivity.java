@@ -26,22 +26,16 @@ import com.example.krasn.agent08.Events.LoginEvent;
 import com.example.krasn.agent08.Events.NewFileEvent;
 import com.example.krasn.agent08.R;
 import com.example.krasn.agent08.bd.DbHelper;
-import com.example.krasn.agent08.bd.DownloadMaster;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_REDOWNLOAD = "redownload";
     private static final String BROWSABLE = "android.intent.category.BROWSABLE";
-    @BindView(R.id.progressBar1)
     ProgressBar pb;
-    @BindView(R.id.loadTextView)
     TextView loadText;
     boolean isReDownload;
     SharedPreferences sp;
@@ -49,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         sp = getApplicationContext().getSharedPreferences(App.APP_PREFERENCES, MODE_PRIVATE);
-        ButterKnife.bind(this);
+        pb = findViewById(R.id.progressBar1);
+        loadText = findViewById(R.id.loadTextView);
         pb.setVisibility(View.VISIBLE);
         ConnectivityManager cm = (ConnectivityManager) App.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
